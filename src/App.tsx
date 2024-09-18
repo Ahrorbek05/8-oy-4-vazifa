@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 
-// Forma validatsiyasi uchun schema
 const BusinessFormSchema = Yup.object().shape({
   businessAddress: Yup.string().required('Required'),
   businessType: Yup.string().required('Required'),
@@ -18,14 +17,13 @@ const RepresentativeFormSchema = Yup.object().shape({
 });
 
 const App = () => {
-  const [step, setStep] = useState(1); // Bosqichlarni kuzatish uchun holat
+  const [step, setStep] = useState(1);
 
   const nextStep = () => setStep(step + 1);
   const prevStep = () => setStep(step - 1);
 
   return (
     <div className="p-6 max-w-xl mx-auto">
-      {/* Step Timeline */}
       <div className="steps mb-8">
         <div className={`step ${step >= 1 ? 'step-primary' : ''}`}>Business Structure</div>
         <div className={`step ${step >= 2 ? 'step-primary' : ''}`}>Bank Details</div>
@@ -33,7 +31,6 @@ const App = () => {
         <div className={`step ${step >= 4 ? 'step-primary' : ''}`}>Overview</div>
       </div>
 
-      {/* Step 1: Business Structure Form */}
       {step === 1 && (
         <Formik
           initialValues={{
@@ -98,7 +95,6 @@ const App = () => {
         </Formik>
       )}
 
-      {/* Step 2: Bank Details Form */}
       {step === 2 && (
         <Formik
           initialValues={{
